@@ -1,17 +1,11 @@
 ﻿using Syncfusion.Windows.Forms.PdfViewer;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Syncfusion.WinForms.Controls;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SyncFusion
 {
-    public partial class PdfForm : Form
+    public partial class PdfForm : SfForm
     {
         private readonly PdfViewerControl pdfViewerControl;
 
@@ -22,12 +16,25 @@ namespace SyncFusion
             pdfViewerControl = new PdfViewerControl();
             pdfViewerControl.Dock = DockStyle.Fill;
             Controls.Add(pdfViewerControl);
-
         }
 
         public void Load(string path)
         {
+            if (pdfViewerControl.IsDocumentLoaded)
+            {
+                pdfViewerControl.Unload();
+            }
+
             pdfViewerControl.Load(path);
+        }
+        public void Load(byte[] pdfBytes)
+        {
+            if (pdfViewerControl.IsDocumentLoaded)
+            {
+                pdfViewerControl.Unload();
+            }
+
+            pdfViewerControl.Load(new MemoryStream(pdfBytes));
         }
         public void PageTo(int page)
         {

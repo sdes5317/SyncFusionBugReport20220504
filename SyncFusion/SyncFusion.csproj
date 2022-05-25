@@ -93,7 +93,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Syncfusion.PdfViewer.Windows">
-      <Version>20.1.0.52</Version>
+      <Version>20.1.0.57</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Shared.Base">
+      <Version>20.1.0.57</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
